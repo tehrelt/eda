@@ -39,6 +39,11 @@ func TestNew(t *testing.T) {
 	for k, v := range envs {
 		os.Setenv(k, v)
 	}
+	defer func() {
+		for k := range envs {
+			os.Unsetenv(k)
+		}
+	}()
 
 	got := config.New()
 
