@@ -10,7 +10,7 @@ create table if not exists customers (
 create table if not exists orders (
   id uuid primary key default uuid_generate_v4(),
   customer_id uuid not null references customers(id),
-  total decimal(10, 2) not null,
+  total bigint not null,
   created_at timestamp default now(),
   updated_at timestamp
 );
